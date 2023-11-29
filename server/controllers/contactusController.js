@@ -34,45 +34,22 @@ const contactUsController = {
     }
   },
 
-  // Update a contact us entry by ID
-  updateContactUs: async (req, res) => {
-    try {
-      const { id } = req.params;
-
-      // Logic to update the contact us entry in the database
-      const updatedContactUs = await ContactUs.findByIdAndUpdate(
-        id,
-        req.body,
-        { new: true } // Return the updated document
-      );
-
-      if (!updatedContactUs) {
-        return res.status(404).json({ error: "ContactUs not found" });
-      }
-
-      res.status(200).json(updatedContactUs);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  },
-
-  // Delete a contact us entry by ID
   deleteContactUs: async (req, res) => {
     try {
       const { id } = req.params;
-
-      // Logic to delete the contact us entry from the database
       const deletedContactUs = await ContactUs.findByIdAndDelete(id);
-
+  
       if (!deletedContactUs) {
         return res.status(404).json({ error: "ContactUs not found" });
       }
-
+  
       res.status(200).json(deletedContactUs);
     } catch (error) {
+      console.error(error);  // Log the error
       res.status(500).json({ error: error.message });
     }
   },
+  
 
   // other controller methods...
 };

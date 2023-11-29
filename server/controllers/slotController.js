@@ -21,6 +21,23 @@ const slotController = {
     }
   },
 
+  deleteSlot: async (req, res) => {
+    try {
+      const slotId = req.params.id;
+
+      // Use deleteOne method to delete the slot
+      const result = await Slot.deleteOne({ _id: slotId });
+
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: 'Slot not found' });
+      }
+
+      res.status(204).send(); // 204 No Content for a successful deletion
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
   // other controller methods...
 };
 

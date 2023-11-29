@@ -3,7 +3,7 @@ import { json } from "express";
 import connectToMongoDB from "./conn.js";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
-import { Server } from "http";
+
 
 dotenv.config();
 
@@ -21,7 +21,7 @@ const startServer = async () => {
     await connectToMongoDB();
 
     server = app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      console.log(`Server running on port ${PORT}`);~
       console.log(`MongoDB connected at ${process.env.MONGODB_URI}`);
     });
   } catch (error) {

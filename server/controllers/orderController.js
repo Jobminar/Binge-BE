@@ -21,6 +21,23 @@ const orderController = {
     }
   },
 
+  deleteOrder: async (req, res) => {
+    try {
+      const orderId = req.params.id;
+
+      // Use deleteOne method to delete the order
+      const result = await Order.deleteOne({ _id: orderId });
+
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+
+      res.status(204).send(); // 204 No Content for a successful deletion
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
   // other controller methods...
 };
 

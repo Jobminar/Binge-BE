@@ -1,43 +1,75 @@
 import express from "express";
 const router = express.Router();
+
 import userController from "../controllers/userController.js";
+import blogsController from "../controllers/blogsController.js";
 import slotController from "../controllers/slotController.js";
 import cakeController from "../controllers/cakeController.js";
 import decorationController from "../controllers/decorationController.js";
 import orderController from "../controllers/orderController.js";
 import contactUsController from "../controllers/contactusController.js";
+// import loginController from "../controllers/loginController.js"
+import loginController from "../controllers/loginController.js";
 
-// Create a new user
+
+
+
+// router.post("/addusers", loginController.addUser);
+
+// // Get all users
+// router.get("/getusers", loginController.getUsers);
+
+// // Delete a user
+// router.delete("/deleteusers/:id", loginController.deleteUser);
+
+
+router.post("/signup", loginController.signup);
+router.post("/login", loginController.login);
+
 router.post("/users", userController.createUser);
+router.get("/getusers",userController.getUsers)
 
-// Get all slots
-router.get("/slots", slotController.getSlots);
 
-// Create a new slot
-router.post("/slots", slotController.createSlot);
+router.get("/getslots", slotController.getSlots);
+router.post("/postslots", slotController.createSlot);
 
-// Get all cakes
-router.get("/cakes", cakeController.getCakes);
+router.delete("/slots/:id",slotController.deleteSlot)
 
-// Create a new cake
-router.post("/cakes", cakeController.createCake);
+router.get("/getcakes", cakeController.getCakes);
 
-// Get all decorations
-router.get("/decorations", decorationController.getDecorations);
 
-// Create a new decoration
-router.post("/decorations", decorationController.createDecoration);
+router.post("/postcakes", cakeController.createCake);
 
-// Get all orders
-router.get("/orders", orderController.getOrders);
+router.delete("/cakes/:cakeId", cakeController.deleteCake);
 
-// Create a new order
-router.post("/orders", orderController.createOrder);
+router.get("/getdecorations", decorationController.getDecorations);
 
-// Get all contact us entries
-router.get("/contactus", contactUsController.getContactUs);
 
-// Create a new contact us entry
-router.post("/contactus", contactUsController.createContactUs);
+router.post("/postdecorations", decorationController.createDecoration);
+
+router.delete("/decorations/:id",decorationController.deleteDecoration)
+
+
+router.get("/getorders", orderController.getOrders);
+
+router.post("/postorders", orderController.createOrder);
+
+router.delete("/deleteorders/:id",orderController.deleteOrder)
+
+
+router.get("/getcontactus", contactUsController.getContactUs);
+
+
+router.post("/postcontactus", contactUsController.createContactUs);
+router.delete('/deletecontactus/:id', contactUsController.deleteContactUs);
+
+
+router.post("/postblogs",blogsController.createBlog)
+
+router.get("/getblogs",blogsController.getBlogs)
+
+
+router.delete('/deleteblog/:id', blogsController.deleteBlog);
+
 
 export default router;
