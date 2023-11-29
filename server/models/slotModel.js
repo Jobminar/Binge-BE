@@ -1,13 +1,13 @@
 import { Schema, model } from "mongoose";
 
-const userSchema = new Schema({
-  name: { type: String, required: true },
-  whatsappNumber: { type: String, required: true },
-  email: { type: String, required: true },
+const slotSchema = new Schema({
+  date: { type: Date, required: true },
+  availability: { type: Boolean, default: true },
   numberOfPeople: { type: Number, required: true },
-  eventType: { type: String, required: true },
+  time: { type: String, required: true },
+  price: { type: Number, required: true },
 });
 
-const User = model("User", userSchema);
+const Slot = model("Slot", slotSchema);
 
-export default User;
+export default Slot;

@@ -1,12 +1,34 @@
-import { Schema, model } from "mongoose";
+import ContactUs from "../models/contactusModel.js";
 
-const contactUsSchema = new Schema({
-  name: { type: String, required: true },
-  mailID: { type: String, required: true },
-  phone: { type: String, required: true },
-  message: { type: String, required: true },
-});
+const contactUsController = {
+  getContactUs: async (req, res) => {
+    try {
+      // Logic to retrieve contact us entries from the database
+      const contactUsEntries = await ContactUs.find();
 
-const ContactUs = model("ContactUs", contactUsSchema);
+      res.status(200).json(contactUsEntries);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 
-export default ContactUs;
+  createContactUs: async (req, res) => {
+    try {
+      const { name, mailID, phone, message } = req.body;
+
+      // Validate request data (you can add more validation logic as needed)
+
+      // Create a new ContactUs entry
+      const newContactUs = new ContactUs({ name, mailID, phone, message });
+      await newContactUs.save();
+
+      res.status(201).json(newContactUs);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
+
+  // other controller methods...
+};
+
+export default contactUsController;

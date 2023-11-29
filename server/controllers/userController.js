@@ -1,12 +1,15 @@
-import { Schema, model } from "mongoose";
+import User from "../models/userModel.js";
 
-const contactUsSchema = new Schema({
-  name: { type: String, required: true },
-  mailID: { type: String, required: true },
-  phone: { type: String, required: true },
-  message: { type: String, required: true },
-});
+const userController = {
+  createUser: async (req, res) => {
+    try {
+      const user = new User(req.body);
+      await user.save();
+      res.status(201).json(user);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  },
+};
 
-const ContactUs = model("ContactUs", contactUsSchema);
-
-export default ContactUs;
+export default userController;

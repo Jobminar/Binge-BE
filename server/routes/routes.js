@@ -1,43 +1,43 @@
 import express from "express";
 const router = express.Router();
-import userController from "../controllers/userController";
-import slotController from "../controllers/slotController";
-import cakeController from "../controllers/cakeController";
-import decorationController from "../controllers/decorationController";
-import orderController from "../controllers/orderController";
-import contactUsController from "../controllers/contactusController";
+import userController from "../controllers/userController.js";
+import slotController from "../controllers/slotController.js";
+import cakeController from "../controllers/cakeController.js";
+import decorationController from "../controllers/decorationController.js";
+import orderController from "../controllers/orderController.js";
+import contactUsController from "../controllers/contactusController.js";
 
-// User Routes
-router.route("/users").post(userController.createUser);
+// Create a new user
+router.post("/users", userController.createUser);
 
-// Slot Routes
-router
-  .route("/slots")
-  .get(slotController.getSlots)
-  .post(slotController.createSlot);
+// Get all slots
+router.get("/slots", slotController.getSlots);
 
-// Cake Routes
-router
-  .route("/cakes")
-  .get(cakeController.getCakes)
-  .post(cakeController.createCake);
+// Create a new slot
+router.post("/slots", slotController.createSlot);
 
-// Decoration Routes
-router
-  .route("/decorations")
-  .get(decorationController.getDecorations)
-  .post(decorationController.createDecoration);
+// Get all cakes
+router.get("/cakes", cakeController.getCakes);
 
-// Order Routes
-router
-  .route("/orders")
-  .get(orderController.getOrders)
-  .post(orderController.createOrder);
+// Create a new cake
+router.post("/cakes", cakeController.createCake);
 
-// Contact Us Routes
-router
-  .route("/contactus")
-  .get(contactUsController.getContactUs)
-  .post(contactUsController.createContactUs);
+// Get all decorations
+router.get("/decorations", decorationController.getDecorations);
+
+// Create a new decoration
+router.post("/decorations", decorationController.createDecoration);
+
+// Get all orders
+router.get("/orders", orderController.getOrders);
+
+// Create a new order
+router.post("/orders", orderController.createOrder);
+
+// Get all contact us entries
+router.get("/contactus", contactUsController.getContactUs);
+
+// Create a new contact us entry
+router.post("/contactus", contactUsController.createContactUs);
 
 export default router;
