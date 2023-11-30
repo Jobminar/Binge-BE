@@ -14,9 +14,9 @@
   "scripts": {
     "start": "node server.js"
   },
-  "name": "server",
+  "name": "index",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
