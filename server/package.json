@@ -8,22 +8,16 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.2",
-    "nodemon": "^3.0.1",
     "twilio": "^4.19.0"
   },
-  "engines": {
-    "node": "14.x"
-  },
-  
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js"
   },
-  "name": "index",
+  "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description":""
 }
