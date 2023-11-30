@@ -8,19 +8,7 @@ import cakeController from "../controllers/cakeController.js";
 import decorationController from "../controllers/decorationController.js";
 import orderController from "../controllers/orderController.js";
 import contactUsController from "../controllers/contactusController.js";
-// import loginController from "../controllers/loginController.js"
 import loginController from "../controllers/loginController.js";
-
-
-
-
-// router.post("/addusers", loginController.addUser);
-
-// // Get all users
-// router.get("/getusers", loginController.getUsers);
-
-// // Delete a user
-// router.delete("/deleteusers/:id", loginController.deleteUser);
 
 
 router.post("/signup", loginController.signup);
