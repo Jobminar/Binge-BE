@@ -3,7 +3,7 @@ import { json } from "express";
 import connectToMongoDB from "./conn.js";
 import routes from "./routes/routes.js";
 import dotenv from "dotenv";
-
+import cors from 'cors';
 
 dotenv.config();
 
@@ -11,8 +11,10 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
+app.use(cors());  // Move this line after defining 'app'
+
 app.use(json());
-app.use("/", routes)
+app.use("/", routes);
 
 let server;
 
@@ -21,7 +23,7 @@ const startServer = async () => {
     await connectToMongoDB();
 
     server = app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);~
+      console.log(`Server running on port ${PORT}`);
       console.log(`MongoDB connected at ${process.env.MONGODB_URI}`);
     });
   } catch (error) {
