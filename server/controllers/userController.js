@@ -5,8 +5,8 @@ import User from "../models/userModel.js";
 const userController = {
   createUser: async (req, res) => {
     try {
-      const { sNo, name, whatsappNumber, email, numberOfPeople, eventType, date } = req.body;
-      const user = new User({ sNo, name, whatsappNumber, email, numberOfPeople, eventType, date });
+      const { sNo, name, mobile, date } = req.body;
+      const user = new User({ sNo, name, mobile, date });
       await user.save();
       res.status(201).json(user);
     } catch (error) {
