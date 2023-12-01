@@ -1,4 +1,3 @@
-// decorationModel.js
 
 import { Schema, model } from "mongoose";
 
