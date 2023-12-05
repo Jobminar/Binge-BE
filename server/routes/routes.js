@@ -8,14 +8,22 @@ import decorationController from "../controllers/decorationController.js";
 import orderController from "../controllers/orderController.js";
 import contactUsController from "../controllers/contactusController.js";
 import loginController from "../controllers/loginController.js";
+import theaterController from "../controllers/theatreController.js";
+import otpController from "../controllers/otpController.js";
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 const router = express.Router();
 
+
+
 router.post("/signup", loginController.signup);
 router.post("/login", loginController.login);
+
+router.post("/sendotp", otpController.sendOTP);
+
 
 router.post("/users", userController.createUser);
 router.get("/getusers", userController.getUsers);
@@ -32,6 +40,7 @@ router.post("/postcakes", cakeController.createCake);
 router.delete("/cakes/:cakeId", cakeController.deleteCake);
 
 router.get("/getdecorations", decorationController.getDecorations);
+
 router.post('/postdecorations', upload.single('image'), decorationController.createDecoration);
 
 router.delete("/decorations/:id", decorationController.deleteDecoration);
@@ -52,5 +61,9 @@ router.post("/postblogs", blogsController.createBlog);
 router.get("/getblogs", blogsController.getBlogs);
 
 router.delete('/deleteblog/:id', blogsController.deleteBlog);
+
+router.post("/posttheater", theaterController.addTheater); 
+router.get("/gettheater",theaterController.getTheaters)
+router.delete("/theater/:id",theaterController.deleteTheater)
 
 export default router;
