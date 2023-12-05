@@ -10,12 +10,11 @@ import contactUsController from "../controllers/contactusController.js";
 import loginController from "../controllers/loginController.js";
 import theaterController from "../controllers/theatreController.js";
 import reportsController from "../controllers/reportsController.js";
-
+import typeOfTheater from "../controllers/typeOfTheaterController.js";
 
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-
 const router = express.Router();
 
 
@@ -26,6 +25,8 @@ router.post("/login", loginController.login);
 router.post("/postreports",reportsController.createReports)
 router.get("/getreports",reportsController.getReports)
 
+router.post("/posttheaterdata", typeOfTheater.createTypeOfTheater);
+router.post("/gettheaterdata", typeOfTheater.getAllTypesOfTheaters);
 
 
 router.post("/users", userController.createUser);
