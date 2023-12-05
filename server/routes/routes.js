@@ -9,7 +9,8 @@ import orderController from "../controllers/orderController.js";
 import contactUsController from "../controllers/contactusController.js";
 import loginController from "../controllers/loginController.js";
 import theaterController from "../controllers/theatreController.js";
-import otpController from "../controllers/otpController.js";
+import reportsController from "../controllers/reportsController.js";
+
 
 
 const storage = multer.memoryStorage();
@@ -22,7 +23,9 @@ const router = express.Router();
 router.post("/signup", loginController.signup);
 router.post("/login", loginController.login);
 
-router.post("/sendotp", otpController.sendOTP);
+router.post("/postreports",reportsController.createReports)
+router.get("/getreports",reportsController.getReports)
+
 
 
 router.post("/users", userController.createUser);
