@@ -44,14 +44,14 @@ const cakeController = {
     try {
       const { cakeId } = req.params;
 
-      // Check if the cake with the given ID exists
+     
       const cake = await Cake.findById(cakeId);
 
       if (!cake) {
         return res.status(404).json({ error: "Cake not found" });
       }
 
-      // Delete the cake
+     
       await Cake.deleteOne({ _id: cakeId });
 
       res.status(204).send();
