@@ -1,4 +1,4 @@
-import Theater from '../models/maxiTheatermodel.js';
+import MiniTheater from "../models/miniTheaterModel.js";
 
 const validateTheaterInput = (price, numberOfPeople) => {
   if (!price || !numberOfPeople || isNaN(price) || isNaN(numberOfPeople)) {
@@ -14,10 +14,10 @@ const miniTheaterController = {
       // Validate input
       validateTheaterInput(price, numberOfPeople);
 
-      const newTheater = new Theater({ price, numberOfPeople });
-      const savedTheater = await newTheater.save();
+      const newTheater = new MiniTheater({ price, numberOfPeople });
+      const savedMiniTheater = await newTheater.save();
 
-      res.status(201).json(savedTheater);
+      res.status(201).json(savedMiniTheater);
     } catch (error) {
       console.error('Error adding theater:', error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -26,7 +26,7 @@ const miniTheaterController = {
 
   getTheaters: async (req, res) => {
     try {
-      const theaters = await Theater.find();
+      const theaters = await MiniTheater.find();
       res.status(200).json(theaters);
     } catch (error) {
       console.error('Error fetching theaters:', error);
@@ -36,14 +36,14 @@ const miniTheaterController = {
 
   updateTheater: async (req, res) => {
     try {
-      const theaterId = req.params.id;
+      const miniTheaterId = req.params.id; // Fix: Change variable name to miniTheaterId
       const { price, numberOfPeople } = req.body;
 
-     
+      // Validate input
       validateTheaterInput(price, numberOfPeople);
 
-      const updatedTheater = await Theater.findOneAndUpdate(
-        { _id: theaterId },
+      const updatedTheater = await MiniTheater.findOneAndUpdate(
+        { _id: miniTheaterId }, // Fix: Use miniTheaterId instead of theaterId
         { price, numberOfPeople },
         { new: true } 
       );
@@ -61,9 +61,9 @@ const miniTheaterController = {
 
   deleteTheater: async (req, res) => {
     try {
-      const theaterId = req.params.id;
-
-      const result = await Theater.deleteOne({ _id: theaterId });
+      const miniTheaterId = req.params.id;
+      
+      const result = await MiniTheater.deleteOne({ _id: miniTheaterId });
 
       if (result.deletedCount === 0) {
         return res.status(404).json({ error: 'Theater not found' });

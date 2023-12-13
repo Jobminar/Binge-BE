@@ -1,10 +1,10 @@
 import { Schema, model } from 'mongoose';
 
-const theaterSchema = new Schema({
+const maxitheaterSchema = new Schema({
   price: { type: Number, required: true },
   numberOfPeople: { type: Number, required: true }
 });
 
-const Theater = model('Theater', theaterSchema);
+const MaxiTheater = model('MaxiTheater', maxitheaterSchema);
 
-export default Theater;
+export default MaxiTheater;

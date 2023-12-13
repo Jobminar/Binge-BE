@@ -1,4 +1,4 @@
-import Theater from '../models/maxiTheatermodel.js';
+import MaxiTheater from "../models/maxiTheatermodel.js";
 
 const validateTheaterInput = (price, numberOfPeople) => {
   if (!price || !numberOfPeople || isNaN(price) || isNaN(numberOfPeople)) {
@@ -14,20 +14,20 @@ const maxiTheaterController = {
       // Validate input
       validateTheaterInput(price, numberOfPeople);
 
-      const newTheater = new Theater({ price, numberOfPeople });
-      const savedTheater = await newTheater.save();
+      const newMaxiTheater = new MaxiTheater({ price, numberOfPeople });
+      const savedMaxiTheater = await newMaxiTheater.save();
 
-      res.status(201).json(savedTheater);
+      res.status(201).json(savedMaxiTheater);
     } catch (error) {
-      console.error('Error adding theater:', error);
+      console.error('Error adding maxitheater:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   },
 
   getTheaters: async (req, res) => {
     try {
-      const theaters = await Theater.find();
-      res.status(200).json(theaters);
+      const maxiTheaters = await MaxiTheater.find();
+      res.status(200).json(maxiTheaters);
     } catch (error) {
       console.error('Error fetching theaters:', error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -36,16 +36,16 @@ const maxiTheaterController = {
 
   updateTheater: async (req, res) => {
     try {
-      const theaterId = req.params.id;
+      const maxiTheaterId = req.params.id;
       const { price, numberOfPeople } = req.body;
 
-     
+      // Validate input
       validateTheaterInput(price, numberOfPeople);
 
-      const updatedTheater = await Theater.findOneAndUpdate(
-        { _id: theaterId },
+      const updatedTheater = await MaxiTheater.findOneAndUpdate(
+        { _id: maxiTheaterId },
         { price, numberOfPeople },
-        { new: true } 
+        { new: true }
       );
 
       if (!updatedTheater) {
@@ -63,7 +63,7 @@ const maxiTheaterController = {
     try {
       const theaterId = req.params.id;
 
-      const result = await Theater.deleteOne({ _id: theaterId });
+      const result = await MaxiTheater.deleteOne({ _id: theaterId });
 
       if (result.deletedCount === 0) {
         return res.status(404).json({ error: 'Theater not found' });
