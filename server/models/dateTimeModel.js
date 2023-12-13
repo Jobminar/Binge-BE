@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+// models/dateTimeModel.js
+import { Schema, model } from 'mongoose';
 
 const dateTimeSchema = new Schema({
   date: { type: Date, required: true },
@@ -9,6 +10,6 @@ const dateTimeSchema = new Schema({
   type: { type: String, required: true },
 });
 
-const DateTime = model("DateTime", dateTimeSchema);
+const DateTime = model('DateTime', dateTimeSchema);
 
 export default DateTime;

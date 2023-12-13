@@ -1,21 +1,25 @@
-import DateTime from "../models/dateTimeModel.js";
+// controllers/dateTimeController.js
+import DateTime from '../models/dateTimeModel.js';
 
 const dateTimeController = {
-  createDateTime: async (req, res) => {
+  addBatchData: async (req, res) => {
     try {
-      const dateTime = new DateTime(req.body);
-      await dateTime.save();
-      res.status(201).json(dateTime);
+      const { slots } = req.body;
+      const insertedSlots = await DateTime.insertMany(slots);
+
+      res.status(201).json({ message: 'Batch data added successfully', insertedSlots });
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      console.error('Error adding batch data:', error.message);
+      res.status(500).json({ error: error.message });
     }
   },
 
-  getDateTimeList: async (req, res) => {
+  getAllBatch: async (req, res) => {
     try {
-      const dateTimeList = await DateTime.find();
-      res.status(200).json(dateTimeList);
+      const allBatch = await DateTime.find();
+      res.status(200).json(allBatch);
     } catch (error) {
+      console.error('Error fetching batch data:', error.message);
       res.status(500).json({ error: error.message });
     }
   },
