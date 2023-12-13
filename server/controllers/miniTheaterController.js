@@ -11,7 +11,7 @@ const miniTheaterController = {
     try {
       const { price, numberOfPeople } = req.body;
 
-      // Validate input
+      
       validateTheaterInput(price, numberOfPeople);
 
       const newTheater = new MiniTheater({ price, numberOfPeople });
@@ -36,14 +36,14 @@ const miniTheaterController = {
 
   updateTheater: async (req, res) => {
     try {
-      const miniTheaterId = req.params.id; // Fix: Change variable name to miniTheaterId
+      const miniTheaterId = req.params.id; 
       const { price, numberOfPeople } = req.body;
 
-      // Validate input
+      
       validateTheaterInput(price, numberOfPeople);
 
       const updatedTheater = await MiniTheater.findOneAndUpdate(
-        { _id: miniTheaterId }, // Fix: Use miniTheaterId instead of theaterId
+        { _id: miniTheaterId }, 
         { price, numberOfPeople },
         { new: true } 
       );
