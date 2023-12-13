@@ -7,12 +7,12 @@ import cakeController from "../controllers/cakeController.js";
 import decorationController from "../controllers/decorationController.js";
 import orderController from "../controllers/orderController.js";
 import loginController from "../controllers/loginController.js";
-import theaterController from "../controllers/theatreController.js";
+
 import reportsController from "../controllers/reportsController.js";
 import typeOfTheater from "../controllers/typeOfTheaterController.js";
 import bookingsController from "../controllers/bookingsController.js";
-
-
+import miniTheaterController from "../controllers/miniTheaterController.js";
+import maxiTheaterController from "../controllers/maxiTheatreController.js";
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 const router = express.Router();
@@ -61,14 +61,19 @@ router.delete('/deletebookings/:id',bookingsController.deleteBookings);
 router.post("/postblogs", blogsController.createBlog);
 
 router.get("/getblogs", blogsController.getBlogs);
-
 router.delete('/deleteblog/:id', blogsController.deleteBlog);
 
-router.post("/posttheater", theaterController.addTheater); 
-router.get("/gettheater",theaterController.getTheaters)
-router.delete("/theater/:id",theaterController.deleteTheater)
-router.put("/updatetheater/:id", theaterController.updateTheater);
-router.patch("/updatetheater/:id", theaterController.updateTheater);
+router.post("/postmaxi", maxiTheaterController.addTheater); 
+router.get("/getmaxi",maxiTheaterController.getTheaters)
+router.delete("/maxi/:id",maxiTheaterController.deleteTheater)
+router.put("/updatemaxi/:id", maxiTheaterController.updateTheater);
+router.patch("/updatemaxi/:id", maxiTheaterController.updateTheater);
+
+router.post("/postmini", miniTheaterController.addTheater); 
+router.get("/getmini",miniTheaterController.getTheaters)
+router.delete("/mini/:id",miniTheaterController.deleteTheater)
+router.put("/updatemini/:id", miniTheaterController.updateTheater);
+router.patch("/updatemini/:id", miniTheaterController.updateTheater);
 
 
 export default router;

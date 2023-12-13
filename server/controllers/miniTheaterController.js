@@ -1,4 +1,4 @@
-import Theater from '../models/theatermodel.js';
+import Theater from '../models/maxiTheatermodel.js';
 
 const validateTheaterInput = (price, numberOfPeople) => {
   if (!price || !numberOfPeople || isNaN(price) || isNaN(numberOfPeople)) {
@@ -6,7 +6,7 @@ const validateTheaterInput = (price, numberOfPeople) => {
   }
 };
 
-const theaterController = {
+const miniTheaterController = {
   addTheater: async (req, res) => {
     try {
       const { price, numberOfPeople } = req.body;
@@ -77,4 +77,4 @@ const theaterController = {
   },
 };
 
-export default theaterController;
+export default miniTheaterController;
