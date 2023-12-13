@@ -7,7 +7,7 @@ import cakeController from "../controllers/cakeController.js";
 import decorationController from "../controllers/decorationController.js";
 import orderController from "../controllers/orderController.js";
 import loginController from "../controllers/loginController.js";
-
+import dateTimeController from "../controllers/dateTimeController.js";
 import reportsController from "../controllers/reportsController.js";
 import typeOfTheater from "../controllers/typeOfTheaterController.js";
 import bookingsController from "../controllers/bookingsController.js";
@@ -74,6 +74,9 @@ router.get("/getmini",miniTheaterController.getTheaters)
 router.delete("/mini/:id",miniTheaterController.deleteTheater)
 router.put("/updatemini/:id", miniTheaterController.updateTheater);
 router.patch("/updatemini/:id", miniTheaterController.updateTheater);
+
+router.post("/postdatetime",dateTimeController.createDateTime)
+router.get("/getdatetime",dateTimeController.getDateTimeList)
 
 
 export default router;
