@@ -77,6 +77,6 @@ router.patch("/updatemini/:id", miniTheaterController.updateTheater);
 
 router.post("/postdatetime",dateTimeController.addBatchData)
 router.get("/getdatetime",dateTimeController.getAllBatch)
-
+router.delete("/deletedatetime/:id",dateTimeController.deleteBatchData)
 
 export default router;

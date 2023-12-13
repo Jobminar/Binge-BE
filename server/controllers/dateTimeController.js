@@ -23,6 +23,19 @@ const dateTimeController = {
       res.status(500).json({ error: error.message });
     }
   },
+
+  deleteBatchData: async (req, res) => {
+    try {
+      const { ids } = req.body;
+      // Assuming ids is an array of ObjectId strings
+      const result = await DateTime.deleteMany({ _id: { $in: ids } });
+
+      res.status(200).json({ message: 'Batch data deleted successfully', result });
+    } catch (error) {
+      console.error('Error deleting batch data:', error.message);
+      res.status(500).json({ error: error.message });
+    }
+  },
 };
 
 export default dateTimeController;
