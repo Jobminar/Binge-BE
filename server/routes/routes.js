@@ -75,8 +75,10 @@ router.delete("/mini/:id",miniTheaterController.deleteTheater)
 router.put("/updatemini/:id", miniTheaterController.updateTheater);
 router.patch("/updatemini/:id", miniTheaterController.updateTheater);
 
+
 router.post("/postdatetime",dateTimeController.addBatchData)
 router.get("/getdatetime",dateTimeController.getAllBatch)
 router.delete("/deletedatetime/:id",dateTimeController.deleteBatchData)
+router.delete("/deletealldatetime",dateTimeController.deleteAllBatchData)
 
 export default router;

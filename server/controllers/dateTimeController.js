@@ -1,4 +1,3 @@
-// controllers/dateTimeController.js
 import DateTime from '../models/dateTimeModel.js';
 
 const dateTimeController = {
@@ -33,6 +32,18 @@ const dateTimeController = {
       res.status(200).json({ message: 'Batch data deleted successfully', result });
     } catch (error) {
       console.error('Error deleting batch data:', error.message);
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  deleteAllBatchData: async (req, res) => {
+    try {
+      
+      const result = await DateTime.deleteMany({});
+
+      res.status(200).json({ message: 'All batch data deleted successfully', result });
+    } catch (error) {
+      console.error('Error deleting all batch data:', error.message);
       res.status(500).json({ error: error.message });
     }
   },
